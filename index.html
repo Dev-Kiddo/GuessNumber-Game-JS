@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess My Number</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="section-1">
+        <a href="#" class="section-1__btn">Again!</a>
+        <h5 class="section-1__heading">[ Between 1 and 20 ]</h5>
+      </section>
+
+      <section class="section-2">
+        <h1 class="section-2__heading">Guess My Number!</h1>
+      </section>
+
+      <section class="section-3">
+        <div class="section-3__line"></div>
+        <div class="section-3__display">
+          <img class="section-3__img" src="./image/dice.gif" alt="" />
+        </div>
+      </section>
+
+      <section class="section-4">
+        <div class="section-4__left-cont">
+          <input class="section-4__input" type="number" minlength="1" maxlength="2" />
+          <a class="section-4__btn" href="#">Check!</a>
+        </div>
+
+        <div class="section-4__right-cont">
+          <!-- 🥳 Correct Number -->
+          <h3 class="section-4__guess-Text">Keep Guessing...</h3>
+          <h3>💯 Score: <span class="section-4__c-score">20</span></h3>
+          <h3>🥇 Highscore: <span class="section-4__h-score"></span></h3>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script/app.js"></script>
+  </body>
+</html>
