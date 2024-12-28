@@ -18,8 +18,14 @@ const highScore = document.querySelector(".section-4__h-score");
 // Generating Random Numbers
 // -----------------------------
 
-let secretGuess = Math.trunc(Math.random() * 20) + 1;
-console.log("secretGuess:", secretGuess);
+let secretGuess;
+
+function generateSecret() {
+  secretGuess = Math.trunc(Math.random() * 20) + 1;
+  // console.log("secretGuess:", secretGuess);
+}
+
+generateSecret();
 
 // scores
 
@@ -29,6 +35,8 @@ let highScoreCount = 0;
 //----------------------------
 // Check Btn Implementations
 //-----------------------------
+
+console.log("secretGuess:", secretGuess);
 
 guessCheckBtn.addEventListener("click", function (e) {
   e.preventDefault();
@@ -41,13 +49,13 @@ guessCheckBtn.addEventListener("click", function (e) {
     if (currentScoreCount > highScoreCount) {
       highScoreCount = currentScoreCount;
       highScore.textContent = highScoreCount;
-
-      document.querySelector(".container").style.backgroundColor = "#367de8";
-
-      guessPreductionText.textContent = "you've Got it 🥳";
-
-      display.textContent = secretGuess;
     }
+
+    document.querySelector(".container").style.backgroundColor = "#367de8";
+
+    guessPreductionText.textContent = "you've Got it 🥳";
+
+    display.textContent = secretGuess;
   } else if (userGuess !== secretGuess) {
     if (currentScoreCount > 0) {
       userGuess < secretGuess ? (guessPreductionText.textContent = "Your Guess is Low 📉") : (guessPreductionText.textContent = "Your Guess is High 📈");
@@ -67,8 +75,13 @@ guessCheckBtn.addEventListener("click", function (e) {
 againBtn.addEventListener("click", function (e) {
   e.preventDefault();
 
+  generateSecret();
+  display.textContent = "?";
   userInput.value = "";
-  display.textContent = "";
   currentScore.textContent = "";
   guessPreductionText.textContent = "Keep guessing...";
+  document.querySelector(".container").style.backgroundColor = "#23b052";
+
+  currentScoreCount = 20;
+  console.log("secadgin number:", secretGuess);
 });
