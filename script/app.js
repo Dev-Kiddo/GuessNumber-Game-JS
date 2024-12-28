@@ -58,7 +58,7 @@ guessCheckBtn.addEventListener("click", function (e) {
     display.textContent = secretGuess;
   } else if (userGuess !== secretGuess) {
     if (currentScoreCount > 0) {
-      userGuess < secretGuess ? (guessPreductionText.textContent = "Your Guess is Low 📉") : (guessPreductionText.textContent = "Your Guess is High 📈");
+      guessPreductionText.textContent = userGuess < secretGuess ? "Your Guess is Low 📉" : "Your Guess is High 📈";
 
       --currentScoreCount;
 
