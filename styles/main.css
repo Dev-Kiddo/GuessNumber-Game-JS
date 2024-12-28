@@ -145,7 +145,7 @@ body {
   color: var(--color-grey-light-1);
 }
 .section-4__right-cont > *:not(:last-child) {
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 .section-4__c-score, .section-4__h-score {
   padding: 2px 14px;

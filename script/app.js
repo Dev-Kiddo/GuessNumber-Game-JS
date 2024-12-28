@@ -2,8 +2,6 @@
 
 const againBtn = document.querySelector(".section-1__btn");
 
-// console.log(againBtn);
-
 const display = document.querySelector(".section-3__display");
 
 const userInput = document.querySelector(".section-4__input");
@@ -21,63 +19,38 @@ const highScore = document.querySelector(".section-4__h-score");
 // -----------------------------
 
 let secretGuess = Math.trunc(Math.random() * 20) + 1;
+console.log("secretGuess:", secretGuess);
 
-// console.log(secretGuess);
-
-// -----------------------------
 // scores
-// -----------------------------
 
 let currentScoreCount = 20;
-let highScoreCount = 20;
+let highScoreCount = 0;
 
-// -----------------------------
+//----------------------------
 // Check Btn Implementations
-// -----------------------------
+//-----------------------------
 
 guessCheckBtn.addEventListener("click", function (e) {
   e.preventDefault();
 
-  const userGuess = Number(userInput.value);
-  //   --------------------------
-  // No input
-  //   --------------------------
+  let userGuess = Number(userInput.value);
+
   if (!userGuess) {
     guessPreductionText.textContent = "❌ No number";
-    //   --------------------------
-    // Guess Correct
-    //   --------------------------
   } else if (userGuess === secretGuess) {
-    guessPreductionText.textContent = "you've Got it 🥳";
+    if (currentScoreCount > highScoreCount) {
+      highScoreCount = currentScoreCount;
+      highScore.textContent = highScoreCount;
 
-    display.textContent = secretGuess;
+      document.querySelector(".container").style.backgroundColor = "#367de8";
 
-    highScore.textContent = currentScoreCount;
-    //   --------------------------
-    // Guess less
-    //   --------------------------
-  } else if (userGuess < secretGuess) {
-    if (currentScoreCount > 0) {
-      guessPreductionText.textContent = "Your Guess is Low 📉";
+      guessPreductionText.textContent = "you've Got it 🥳";
 
-      --currentScoreCount;
-
-      currentScore.textContent = currentScoreCount;
-    } else {
-      guessPreductionText.textContent = "You lost the game";
+      display.textContent = secretGuess;
     }
-
-    //   --------------------------
-    // Guess greater than limit
-    //   --------------------------
-  } else if (userGuess > 21) {
-    guessPreductionText.textContent = "Please enter valid guess";
-    //   --------------------------
-    // Guess High
-    //   --------------------------
-  } else if (userGuess > secretGuess) {
+  } else if (userGuess !== secretGuess) {
     if (currentScoreCount > 0) {
-      guessPreductionText.textContent = "Your Guess is High 📈";
+      userGuess < secretGuess ? (guessPreductionText.textContent = "Your Guess is Low 📉") : (guessPreductionText.textContent = "Your Guess is High 📈");
 
       --currentScoreCount;
 
